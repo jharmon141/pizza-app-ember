@@ -4,11 +4,6 @@ export default Ember.Controller.extend({
   sizeChosen: false,
   pizza: null,
 
-  init(){
-    this._super(...arguments);
-    this.send('resetForm');
-  },
-
   actions: {
     selectPizza(pizza) {
       this.set('pizza', pizza);

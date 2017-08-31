@@ -1,0 +1,19 @@
+{{cart-link resetForm="resetForm"}}
+
+{{#if loading}}
+
+  <div class="row justify-content-sm-center">
+    <div class="col-sm-auto">
+      Loading...
+    </div>
+  </div>
+
+{{else}}
+
+  {{#if sizeChosen}}
+    {{pizza-form pizza=pizza handleAddToCart="handleAddToCart" resetForm="resetForm"}}
+  {{else}}
+    {{size-menu selectPizza="selectPizza" pizzaSizes=model}}
+  {{/if}}
+
+{{/if}}

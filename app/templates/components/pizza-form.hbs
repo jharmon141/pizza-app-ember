@@ -1,0 +1,108 @@
+{{#if submitted}}
+
+  <div class="row justify-content-sm-center">
+    <div class="col-sm-auto">
+      <h1>Pizza added!</h1>
+      <span
+         class="button"
+         onClick={{action "handleResetForm"}}>
+        Add more pizza 
+      </span>
+      <br />
+      <br />
+      {{#link-to 'cart'}}
+        <span
+         class="button"
+         onClick={{action "handleResetForm"}}>
+          Go to cart
+        </span>
+      {{/link-to}}
+    </div>
+  </div>
+
+{{else}}
+
+  <div class="row justify-content-sm-center">
+    <div class="col-sm-auto">
+      <h2>Size: {{touppercase pizza.name}}</h2>
+      <h4>Base price: ${{currency pizza.basePrice}}</h4>
+      <h5>Max number of toppings: {{maxNumberOfToppings}}</h5>
+    </div>
+  </div>
+
+  <div class="row justify-content-sm-center">
+    <div class="col-sm-auto">
+      <h4>Select your toppings:</h4>
+    </div>
+
+    <div class="col-sm-auto">
+      <form class="toppings">
+        {{#each pizza.toppings as |topping|}}
+          {{#if toppingsMax}}
+            <label>
+              <input type="checkbox" 
+                     onChange={{action "handleToppingChange" topping.topping}}
+                     name={{topping.topping.name}}
+                     value={{topping}}
+                     checked={{if-in topping.topping pickedToppings}}
+                     disabled={{if-out topping.topping pickedToppings}}/>
+              {{topping.topping.name}} (${{currency topping.topping.price}})
+            </label>
+            <br>
+
+          {{else}}
+            <label>
+              <input type="checkbox" 
+                     onChange={{action "handleToppingChange" topping.topping}}
+                     name={{topping.topping.name}}
+                     value={{topping}}
+                     checked={{if-in topping.topping pickedToppings}}/>
+              {{topping.topping.name}} (${{currency topping.topping.price}})
+            </label>
+            <br>
+          {{/if}}
+
+        {{/each}}
+      </form>
+    </div>
+  </div>
+
+  <div class="row justify-content-sm-center">
+    <label class="quantityLabel">
+      Quantity: 
+      <select 
+           class="quantitySelect"
+           onchange={{action "selectQuantity"}}
+           value={{quantity}}>
+
+        {{#each quantityNums as |num|}}
+          <option
+           key={{num}}
+           value={{num}}>
+          {{num}}
+          </option>
+        {{/each}}
+      </select>
+    </label>
+  </div>
+
+  <div class="row justify-content-sm-center">
+    <h4>Total: ${{currency grandTotal}}</h4>
+  </div>
+
+  <div class="row justify-content-sm-center">
+    <span
+       class="button"
+       onClick={{action "handleAddToCart"}}>
+      Add to Cart
+    </span>
+  </div>
+
+  <div class="row justify-content-sm-center">
+    <span
+       class="button"
+       onClick={{action "handleResetForm"}}>
+      Go back
+    </span>
+  </div>
+{{/if}}

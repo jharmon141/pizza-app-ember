@@ -1,0 +1,23 @@
+<div class="row justify-content-sm-center">
+  <div class="col-sm-auto">
+    <h2>Choose a size:</h2>
+  </div>
+</div>
+
+<select onchange={{action "handleSelectSize" value="target.value"}}>
+  {{#each pizzaSizes as |pizzaSize|}}
+    <option value={{pizzaSize.name}}>
+    {{touppercase pizzaSize.name}}
+    </option>
+  {{/each}} 
+</select>
+
+<div class="row justify-content-sm-center">
+  <div class="col-sm-auto">
+    <span 
+       class="button" 
+       onClick={{action "submitSize"}}>
+      Continue 
+    </span>
+  </div>
+</div>

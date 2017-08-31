@@ -40,7 +40,7 @@ export default Ember.Service.extend({
 
   updatePizza(pizza) {
     let pizzaIndex = this.get('pizzas').findIndex((target) => target.id === pizza.id);
-    let newPizzas = this.get('pizzas');
+    let newPizzas = this.get('pizzas').slice();
     newPizzas.splice(pizzaIndex, 1, pizza);
     this.set('pizzas', newPizzas);
   }

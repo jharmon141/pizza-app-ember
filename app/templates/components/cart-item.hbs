@@ -6,7 +6,7 @@
   </div>
   <div class="col-md-3 cartItem">
     {{#each pizza.toppings as |topping|}}
-      {{topping.name}}
+      {{toppings topping pizza.toppings}}
     {{/each}}
   </div>
   <div class="col-md-2">

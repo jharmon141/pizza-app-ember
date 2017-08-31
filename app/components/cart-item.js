@@ -4,10 +4,6 @@ export default Ember.Component.extend({
   cart: Ember.inject.service(),
   quantityNums: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 
-  didInsertElement() {
-    this.rerender();
-  },
-
   actions: {
     handleRemovePizza() {
       let pizza = this.get('pizza');

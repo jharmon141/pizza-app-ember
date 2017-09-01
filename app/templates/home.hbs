@@ -1,4 +1,4 @@
-{{cart-link resetForm="resetForm"}}
+{{cart-link}}
 
 {{#if loading}}
 
@@ -11,7 +11,7 @@
 {{else}}
 
   {{#if sizeChosen}}
-    {{pizza-form pizza=pizza handleAddToCart="handleAddToCart" resetForm="resetForm"}}
+    {{pizza-form pizza=pizza resetForm="resetForm" handleAddToCart="handleAddToCart"}}
   {{else}}
     {{size-menu selectPizza="selectPizza" pizzaSizes=model}}
   {{/if}}

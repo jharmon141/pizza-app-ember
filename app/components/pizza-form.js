@@ -108,7 +108,7 @@ export default Ember.Component.extend({
         this.set('maxNumberOfToppings',  this.get('pizza.maxNumberOfToppings'));
       } else {
         this.set('maxNumberOfToppings',  'Unlimited!');
-      };
+      }
     }
   }
 });

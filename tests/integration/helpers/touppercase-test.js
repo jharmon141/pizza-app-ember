@@ -8,10 +8,10 @@ moduleForComponent('touppercase', 'helper:touppercase', {
 
 // Replace this with your real tests.
 test('it renders', function(assert) {
-  this.set('inputValue', '1234');
+  this.set('inputValue', 'small');
 
   this.render(hbs`{{touppercase inputValue}}`);
 
-  assert.equal(this.$().text().trim(), '1234');
+  assert.equal(this.$().text().trim(), 'SMALL');
 });
 

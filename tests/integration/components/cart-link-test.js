@@ -9,17 +9,9 @@ test('it renders', function(assert) {
 
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
+  this.set('cart', {count: 3});
+  this.render(hbs`{{cart-link cart=cart}}`);
 
-  this.render(hbs`{{cart-link}}`);
+  assert.equal(this.$().text().trim(), '(3)Cart', 'it renders the cart count');
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#cart-link}}
-      template block text
-    {{/cart-link}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

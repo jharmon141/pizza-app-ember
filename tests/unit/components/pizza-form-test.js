@@ -1,16 +1,21 @@
 import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('pizza-form', 'Integration | Component | pizza form', {
-  integration: true
+moduleForComponent('pizza-form', 'Unit | Component | pizza form', {
+  // Specify the other units that are required for this test
+  needs: ['service:cart', 'helper:currency'],
+  unit: true
 });
 
-test('it renders', function(assert) {
+//things to test: 
+//    selectQuantity: make sure quantity and grandTotal changes,
+//    handleToppingChange: addTopping and removeTopping
+//            -make sure that toppingsMax changes to true
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test('it handles quantity change', function(assert) {
 
-  this.set('pizza', {
+  // Creates the component instance
+  const pizzaForm = this.subject();
+  pizzaForm.set('pizza', {
     name: "small",
     basePrice: 9.89,
     maxNumberOfToppings: 3,
@@ -82,12 +87,10 @@ test('it renders', function(assert) {
     __typename: "pizzaSize"
   });
 
-  this.render(hbs`{{pizza-form pizza=pizza}}`);
-
-  assert.equal(this.$('h2').text().trim(), 'Size: SMALL', 'title renders');
-  assert.equal(this.$('h4').first().text().trim(), 'Base price: $9.89', 'base price renders');
-  assert.equal(this.$('h5').first().text().trim(), 'Max number of toppings: 3', 'max toppings render');
-  assert.equal(this.$('label').first().text().trim(), 'pepperoni ($0.40)', 'toppings render');
-  assert.equal(this.$('.quantitySelect').find('option:selected').text().trim(), '1', 'quantity select renders');
-  assert.equal(this.$('.total').text().trim(), 'Total: $9.99', 'total renders');
+  pizzaForm.send('initializeForm');
+  assert.equal(pizzaForm.get('quantity'), 1, 'form initializes with quantity of 1');
+  // pizzaForm.send('selectQuantity', '3');
+  // // this.render();
+  // assert.equal(pizzaForm.get('grandTotal'), 19.98, 'grandTotal recalculates');
+  // assert.equal(pizzaForm.get('quantity'), 3, 'quantity changes correctly');
 });

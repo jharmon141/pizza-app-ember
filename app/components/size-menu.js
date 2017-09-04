@@ -4,8 +4,8 @@ export default Ember.Component.extend({
   selectedSize: 'small',
 
   actions: {
-    handleSelectSize(pizza) {
-      this.set('selectedSize', pizza);
+    handleSelectSize(size) {
+      this.set('selectedSize', size);
     },
 
     submitSize() {

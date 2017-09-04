@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<select onchange={{action "handleSelectSize" value="target.value"}}>
+<select onchange={{action "handleSelectSize" value="target.value"}} class="select">
   {{#each pizzaSizes as |pizzaSize|}}
     <option value={{pizzaSize.name}}>
     {{touppercase pizzaSize.name}}

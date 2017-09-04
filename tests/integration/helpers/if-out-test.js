@@ -8,10 +8,17 @@ moduleForComponent('if-out', 'helper:if-out', {
 
 // Replace this with your real tests.
 test('it renders', function(assert) {
-  this.set('inputValue', '1234');
+  this.set('inputValue', 'bell peps');
+  this.set('list', ['pepperoni', 'bell peps', 'cheese']);
 
-  this.render(hbs`{{if-out inputValue}}`);
+  this.render(hbs`{{if-out inputValue list}}`);
 
-  assert.equal(this.$().text().trim(), '1234');
+  assert.equal(this.$().text().trim(), 'false', 'it returns false if item in list');
+
+  this.set('inputValue', 'banana peps');
+
+  this.render(hbs`{{if-out inputValue list}}`);
+
+  assert.equal(this.$().text().trim(), 'true', 'it returns true if item not in list');
 });
 

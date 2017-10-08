@@ -1,10 +1,7 @@
 import Ember from 'ember';
 
 export function ifIn([item, list]) {
-  if(list.includes(item)) {
-    return true;
-  }
-  return false;
+  return list.includes(item)
 }
 
 export default Ember.Helper.helper(ifIn);

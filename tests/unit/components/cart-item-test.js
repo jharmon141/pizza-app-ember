@@ -6,11 +6,11 @@ moduleForComponent('cart-item', 'Unit | Component | cart item', {
   unit: true
 });
 
-// test('it renders', function(assert) {
+test('it renders', function(assert) {
 
-//   // Creates the component instance
-//   /*let component =*/ this.subject();
-//   // Renders the component to the page
-//   this.render();
-//   assert.equal(this.$().text().trim(), '');
-// });
+  // Creates the component instance
+  /*let component =*/ this.subject();
+  // Renders the component to the page
+  this.render();
+  assert.equal(this.$().text().trim(), '');
+});

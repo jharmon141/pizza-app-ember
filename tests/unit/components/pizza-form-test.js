@@ -15,7 +15,7 @@ test('it handles quantity change', function(assert) {
 
   // Creates the component instance
   const pizzaForm = this.subject();
-  pizzaForm.set('pizza', {
+  let selectedPizza =  {
     name: "small",
     basePrice: 9.89,
     maxNumberOfToppings: 3,
@@ -85,9 +85,21 @@ test('it handles quantity change', function(assert) {
       }
     ],
     __typename: "pizzaSize"
-  });
+  };
 
-  pizzaForm.send('initializeForm');
+  pizzaForm.set('pizza', selectedPizza);
+
+  pizzaForm.setProperties({
+    quantityNums: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    submitted: false,
+    pickedToppings: [],
+    toppingsMax: false ,
+    quantity: 1,
+    maxNumberOfToppings: 0,
+    total: 0,
+    grandTotal: 0
+  })
+
   assert.equal(pizzaForm.get('quantity'), 1, 'form initializes with quantity of 1');
   // pizzaForm.send('selectQuantity', '3');
   // // this.render();
